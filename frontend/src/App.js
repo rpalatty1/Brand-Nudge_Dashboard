@@ -59,7 +59,7 @@ function App() {
 
   const promotionCount = filteredProducts.filter(p => p.OnPromotion).length;
 
-  //Chart data aggregation
+  //Chart data 
   const chartData = useMemo(() => {
     const dailyData = {};
     filteredProducts.forEach(p => {
@@ -142,21 +142,35 @@ function App() {
           </div>
         </div>
 
-        {/* Trend Chart */}
+        {/* Trend Line Chart */}
         <div style={{ background: 'white', padding: '32px', borderRadius: '24px', boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1)', marginBottom: '48px' }}>
           <h2 style={{ fontSize: '28px', fontWeight: '600', marginBottom: '24px' }}>Average Shelf Price Trend</h2>
           <ResponsiveContainer width="100%" height={420}>
             <LineChart data={chartData}>
               <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="date" />
-              <YAxis domain={[0, 8]} />
+              <XAxis 
+                dataKey="date" 
+                label={{ value: 'Date', position: 'insideBottom', offset: -10, fontSize: 14 }}
+              />
+              <YAxis 
+                domain={[0, 8]} 
+                label={{ value: 'Price (£)', angle: -90, position: 'insideLeft', offset: 10, fontSize: 14 }}
+              />
               <Tooltip formatter={(value) => [`£${value}`]} />
               <Legend />
               {selectedRetailers.length === 0 ? (
                 <Line type="monotone" dataKey="avgPrice" stroke="#111827" strokeWidth={5} dot={{ r: 7 }} name="All Retailers" />
               ) : (
                 selectedRetailers.map((retailer, idx) => (
-                  <Line key={retailer} type="monotone" dataKey={retailer} stroke={COLORS[idx % COLORS.length]} strokeWidth={4} dot={{ r: 6 }} name={retailer} />
+                  <Line 
+                    key={retailer} 
+                    type="monotone" 
+                    dataKey={retailer} 
+                    stroke={COLORS[idx % COLORS.length]} 
+                    strokeWidth={4} 
+                    dot={{ r: 6 }} 
+                    name={retailer} 
+                  />
                 ))
               )}
             </LineChart>
