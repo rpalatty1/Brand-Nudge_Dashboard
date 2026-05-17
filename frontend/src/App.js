@@ -19,7 +19,7 @@ function App() {
 
   //Data Fetching + Cleaning 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/products?limit=15000')
+    axios.get(`${process.env.REACT_APP_API_URL}/api/products?limit=15000`) //for vercel deployment
       .then(res => {
         const rawData = Array.isArray(res.data) ? res.data : res.data.products || [];
         
