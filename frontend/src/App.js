@@ -157,7 +157,7 @@ function App() {
                 label={{ value: 'Price (£)', angle: -90, position: 'insideLeft', offset: 10, fontSize: 14 }}
               />
               <Tooltip formatter={(value) => [`£${value}`]} />
-              <Legend verticalAlign="top" height={36} />
+              <Legend />
               {selectedRetailers.length === 0 ? (
                 <Line type="monotone" dataKey="avgPrice" stroke="#111827" strokeWidth={5} dot={{ r: 7 }} name="All Retailers" />
               ) : (
