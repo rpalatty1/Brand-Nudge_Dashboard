@@ -1,33 +1,33 @@
-# Brand Nudge - Pricing & Promotions Dashboard
+# Pricing & Promotions Dashboard
 #### Ronia Palatty
 
-### A full-stack market intelligencce dashboard for the Junior Developer Technical Exercise.
+### A full-stack market intelligence dashboard for the Brand Nudge Junior Developer Technical Exercise.
 
 ![Dashboard Screenshot](UI.JPG)
 
 ## Features include:
 - **Interactive Trend Chart** – Average shelf price over time with multi-retailer comparison (colour-coded lines)
-- **Multi-Select Retailer Filter** – Compare multiple retailers simultaneously
-- **Product Search** – Real-time search by product title
+- **Multi-Select Retailer Filter** – Compares multiple retailers simultaneously
+- **Product Search** – Real-time search by product detail title
 - **KPI Cards** – Average price, promotions count, total shown
-- **Optimized Table** – Scrollable with performance limits
+- **Optimised Table** – Scrollable with performance limits
 - **Clean UI** – Inspired by Brand Nudge branding
 
 ## Tech Stack:
 **Backend**
 - Node.js + Express.js
-- CSV parsing with 'csv-parser'
+- CSV parsing 
 
 **Frontend**
 - React 18 (Hooks)
 - Recharts (Line Chart)
-- react-select (Multi-select)
+- React-select (Multi-select)
 
 ## Setup Instructions:
 ### Backend
 - cd backend
 - npm install
-- node server.js
+- npm run dev
 
 ### Frontend
 - cd frontend
