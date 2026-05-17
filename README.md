@@ -25,11 +25,11 @@ A full-stack React + Node.js market intelligence dashboard.
 
 ## Setup Instructions:
 ### Backend
-cd backend
-npm install
-node server.js
+- cd backend
+- npm install
+- node server.js
 
 ### Frontend
-cd frontend
-npm install
-npm start
+- cd frontend
+- npm install
+- npm start
