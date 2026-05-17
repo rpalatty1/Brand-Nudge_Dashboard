@@ -4,7 +4,7 @@
 
 A full-stack React + Node.js market intelligence dashboard.
 
-![UI](UI.JPEG)
+![UI](UI.JPG)
 
 ## Features include:
 - Interactive **Average Shelf Price Trend** line chart with multi-retailer comparison
