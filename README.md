@@ -5,6 +5,10 @@
 
 ![Dashboard Screenshot](UI.JPG)
 
+## Demo:
+- **Frontend**: [https://brand-nudge-dashboard.vercel.app](https://brand-nudge-dashboard.vercel.app)
+- **Backend**: [https://brand-nudge-backend.onrender.com](https://brand-nudge-backend.onrender.com)
+
 ## Features include:
 - **Interactive Trend Chart** – Average shelf price over time with multi-retailer comparison (colour-coded lines)
 - **Multi-Select Retailer Filter** – Compares multiple retailers simultaneously
