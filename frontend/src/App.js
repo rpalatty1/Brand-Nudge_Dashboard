@@ -6,15 +6,18 @@ import {
   Tooltip, Legend, ResponsiveContainer 
 } from 'recharts';
 
+//Line chart colour palette
 const COLORS = ['#1e40af', '#ef4444', '#10b981', '#f59e0b', '#8b5cf6'];
 
 function App() {
+  //State Management
   const [products, setProducts] = useState([]);
   const [retailers, setRetailers] = useState([]);
   const [selectedRetailers, setSelectedRetailers] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [loading, setLoading] = useState(true);
 
+  //Data Fetching + Cleaning 
   useEffect(() => {
     axios.get('http://localhost:5000/api/products?limit=15000')
       .then(res => {
@@ -36,6 +39,7 @@ function App() {
       });
   }, []);
 
+  //Filtering Logic
   const filteredProducts = useMemo(() => {
     let result = products;
     if (selectedRetailers.length > 0) {
@@ -48,18 +52,21 @@ function App() {
     return result;
   }, [products, selectedRetailers, searchTerm]);
 
+  //KPI Calculations
   const avgPrice = filteredProducts.length > 0 
     ? (filteredProducts.reduce((sum, p) => sum + p.ShelfPrice, 0) / filteredProducts.length).toFixed(2) 
     : "0.00";
 
   const promotionCount = filteredProducts.filter(p => p.OnPromotion).length;
 
+  //Chart data aggregation
   const chartData = useMemo(() => {
     const dailyData = {};
     filteredProducts.forEach(p => {
       const date = p.Date;
       if (!dailyData[date]) dailyData[date] = { date };
 
+      //all or per retailer view
       if (selectedRetailers.length === 0) {
         if (!dailyData[date].overall) dailyData[date].overall = { total: 0, count: 0 };
         dailyData[date].overall.total += p.ShelfPrice;
@@ -87,12 +94,15 @@ function App() {
       .sort((a, b) => a.date.localeCompare(b.date));
   }, [filteredProducts, selectedRetailers]);
 
+  //dropdown to select retailers
   const retailerOptions = retailers.map(r => ({ value: r, label: r }));
 
+  //loading state
   if (loading) return <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '22px' }}>Loading Brand Nudge data...</div>;
 
   return (
     <div style={{ minHeight: '100vh', backgroundColor: '#f8fafc' }}>
+      {/* Header */}
       <header style={{ backgroundColor: '#1e3a8a', color: 'white', padding: '32px 0' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 32px' }}>
           <h1 style={{ fontSize: '48px', fontWeight: 'bold' }}>Brand Nudge</h1>
@@ -132,7 +142,7 @@ function App() {
           </div>
         </div>
 
-        {/* Chart */}
+        {/* Trend Chart */}
         <div style={{ background: 'white', padding: '32px', borderRadius: '24px', boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1)', marginBottom: '48px' }}>
           <h2 style={{ fontSize: '28px', fontWeight: '600', marginBottom: '24px' }}>Average Shelf Price Trend</h2>
           <ResponsiveContainer width="100%" height={420}>
@@ -158,6 +168,7 @@ function App() {
           <div style={{ padding: '32px', borderBottom: '1px solid #e5e7eb', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '16px' }}>
             <h2 style={{ fontSize: '28px', fontWeight: '600' }}>Product Details</h2>
             
+            {/* Search Bar */}
             <div style={{ display: 'flex', gap: '12px' }}>
               <input
                 type="text"
@@ -172,6 +183,7 @@ function App() {
             </div>
           </div>
 
+          {/* Table */}
           <div style={{ maxHeight: '560px', overflowY: 'auto' }}>
             <table style={{ width: '100%', borderCollapse: 'collapse' }}>
               <thead style={{ position: 'sticky', top: 0, background: '#f8fafc', zIndex: 10 }}>
