@@ -10,12 +10,12 @@
 - **Backend**: [https://brand-nudge-backend.onrender.com](https://brand-nudge-backend.onrender.com)
 
 ## Features include:
-- **Interactive Trend Chart** – Average shelf price over time with multi-retailer comparison (colour-coded lines)
-- **Multi-Select Retailer Filter** – Compares multiple retailers simultaneously
-- **Product Search** – Real-time search by product detail title
-- **KPI Cards** – Average price, promotions count, total shown
-- **Optimised Table** – Scrollable with performance limits
-- **Clean UI** – Inspired by Brand Nudge branding
+- **Interactive Trend Chart** - Average shelf price over time with multi-retailer comparison (colour-coded lines)
+- **Multi-Select Retailer Filter** - Compares multiple retailers simultaneously
+- **Product Search** - Real-time search by product details
+- **KPI Cards** - Average price, promotions count, total shown
+- **Optimised Table** - Scrollable product detail list
+- **Clean UI** - Inspired by Brand Nudge branding
 
 ## Tech Stack:
 **Backend**
